@@ -4,6 +4,7 @@
 
 #include <opencraft.h>
 
+// Using entry point for app.
 int main(int argc, char* argv[]) {
 	geodesuka::engine Engine(argc, argv);
 	if (Engine.is_ready()) {

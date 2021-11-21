@@ -4,17 +4,25 @@
 
 #include <geodesuka/engine.h>
 
-class opencraft : public geodesuka::core::app {
+using namespace geodesuka;
+using namespace core;
+using namespace gcl;
+using namespace object;
+// 
+class opencraft : public app {
 public:
 
-	opencraft(geodesuka::engine* aEngine, int argc, char* argv[]);
+	opencraft(engine* aEngine, int argc, char* argv[]);
 	~opencraft();
 
 	virtual void run() override;
 
 private:
 
-	geodesuka::core::gcl::context* Context;
+	// Main context for game
+	context* Context;
+	system_window* Window;
+	system_window* Window1;
 
 
 };
