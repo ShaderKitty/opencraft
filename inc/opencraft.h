@@ -15,7 +15,7 @@ public:
 	opencraft(engine* aEngine, int argc, char* argv[]);
 	~opencraft();
 
-	virtual void run() override;
+	virtual void gameloop() override;
 
 private:
 

@@ -60,7 +60,7 @@ opencraft::~opencraft() {
 
 }
 
-void opencraft::run() {
+void opencraft::gameloop() {
 
 	system_display* SystemDisplay = this->Engine->get_primary_display();
 	window::prop WindowProperty = window::prop();
@@ -76,7 +76,7 @@ void opencraft::run() {
 	SwapchainProperty.PresentMode = swapchain::mode::FIFO;
 	SwapchainProperty.Clipped = true;
 
-	system_window *Window2 = new system_window(
+	system_window* Window2 = new system_window(
 		this->Engine,
 		Context,
 		SystemDisplay,
@@ -89,13 +89,11 @@ void opencraft::run() {
 	);
 
 	// App loop
-	while (!Engine->Shutdown.load()) {
+	while (!ExitApp.load()) {
 
 		core::logic::waitfor(3);
-		Engine->Shutdown.store(true);
+		ExitApp.store(true);
 	}
 
 	delete Window2;
-
-
 }
