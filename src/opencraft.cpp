@@ -65,53 +65,6 @@ opencraft::~opencraft() {
 
 void opencraft::gameloop() {
 
-	/*
-	
-	// Binds a list of descriptor sets to match pipeline layout.
-	vkCmdBindDescriptorSets()
-
-	*/
-	
-	//VkResult Result = VkResult::VK_SUCCESS;
-	//VkDescriptorPoolCreateInfo DPCI{};
-	//VkDescriptorPool DP;
-
-	//VkDescriptorPoolSize DPS[3];
-
-	//VkDescriptorSetLayoutBinding DSLB[3][3];
-
-	//DPS[0].type				= VkDescriptorType::VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-	//DPS[0].descriptorCount	= 3;
-
-	//DPS[1].type				= VkDescriptorType::VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT;
-	//DPS[1].descriptorCount	= 1;
-
-	//DPS[2].type				= VkDescriptorType::VK_DESCRIPTOR_TYPE_SAMPLER;
-	//DPS[2].descriptorCount	= 2;
-
-	//DPCI.sType				= VkStructureType::VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-	//DPCI.pNext				= NULL;
-	//DPCI.flags				= 0;
-	//DPCI.maxSets			= 4;
-	//DPCI.poolSizeCount		= 3;
-	//DPCI.pPoolSizes			= DPS;
-
-	//Result = vkCreateDescriptorPool(this->Context->handle(), &DPCI, NULL, &DP);
-
-	//VkDescriptorSetAllocateInfo DSAI{};
-
-	//DSAI.sType					= VkStructureType::VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
-	//DSAI.pNext					= NULL;
-	//DSAI.descriptorPool			= DP;
-	//DSAI.descriptorSetCount		= 3;
-	//DSAI.pSetLayouts			;
-
-	//VkAttachmentDescription Att = this->Window->Texture[0].description(
-	//	texture::loadop::LOAD, texture::storeop::STORE,
-	//	texture::loadop::DONT_CARE, texture::storeop::DONT_CARE,
-	//	texture::layout::UNDEFINED, texture::layout::COLOR_ATTACHMENT
-	//);
-
 	system_display* SystemDisplay = this->Engine->get_primary_display();
 	window::prop WindowProperty = window::prop();
 	swapchain::prop SwapchainProperty = swapchain::prop();
