@@ -11,10 +11,10 @@ int main(int aCmdArgCount, char* aCmdArgList[]) {
 	};
 
 	std::vector<const char*> Ext = {
-
+		VK_KHR_DISPLAY_EXTENSION_NAME
 	};
 
-	geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, Layer.size(), Layer.data(), 0, NULL);
+	geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, Layer.size(), Layer.data(), Ext.size(), Ext.data());
 	//geodesuka::engine Engine(0, NULL, 0, NULL, 0, NULL);
 	if (Engine.is_ready()) {
 		opencraft OpenCraft(&Engine, aCmdArgCount, aCmdArgList);
