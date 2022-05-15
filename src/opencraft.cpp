@@ -6,6 +6,7 @@
 
 opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geodesuka::core::app(aEngine, argc, argv) {
 
+	// Get GPU
 	int DeviceCount = 0;
 	device** Device = Engine->get_device_list(&DeviceCount);
 
@@ -21,7 +22,6 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 	swapchain::prop SwapchainProperty = swapchain::prop();
 
 	WindowProperty.UserFocused = GLFW_FALSE;
-
 
 	SwapchainProperty.Count				= 3;
 	SwapchainProperty.ColorSpace		= swapchain::colorspace::SRGB_NONLINEAR;
@@ -54,7 +54,7 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 		"cock"
 	);
 
-	Triangle = new triangle(Engine, Context);
+	//Triangle = new triangle(Engine, Context);
 
 }
 

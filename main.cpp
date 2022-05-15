@@ -1,21 +1,23 @@
-#include <iostream>
-
 #include <geodesuka/engine.h>
 
 #include <opencraft.h>
 
-int2 temptest() {
-	int2 temp(0, 0);
-
-	int2 temp2 = temp;
-	return temp2;
-}
-
 // Using entry point for app.
-int main(int argc, char* argv[]) {
-	geodesuka::engine Engine(argc, argv);
+int main(int aCmdArgCount, char* aCmdArgList[]) {
+
+	// Instance Layers & Extensions.
+	std::vector<const char*> Layer = {
+		"VK_LAYER_KHRONOS_validation"
+	};
+
+	std::vector<const char*> Ext = {
+
+	};
+
+	geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, Layer.size(), Layer.data(), 0, NULL);
+	//geodesuka::engine Engine(0, NULL, 0, NULL, 0, NULL);
 	if (Engine.is_ready()) {
-		opencraft OpenCraft(&Engine, argc, argv);
+		opencraft OpenCraft(&Engine, aCmdArgCount, aCmdArgList);
 		Engine.run(&OpenCraft);
 	}
 	return 0;
