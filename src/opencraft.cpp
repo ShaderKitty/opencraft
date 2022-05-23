@@ -17,85 +17,48 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 		}
 	}
 
-	system_display* SystemDisplay = this->Engine->get_primary_display();
-	window::prop WindowProperty = window::prop();
-	system_window::swapchain::prop SwapchainProperty = system_window::swapchain::prop();
+	Display = Engine->get_primary_display();
 
-	WindowProperty.UserFocused = 0;
+	system_window::propertyvsc Property;
 
-	SwapchainProperty.Count				= 3;
-	SwapchainProperty.ColorSpace		= system_window::colorspace::SRGB_NONLINEAR;
-	SwapchainProperty.Usage				= texture::usage::COLOR_ATTACHMENT;
-	SwapchainProperty.CompositeAlpha	= system_window::composite::ALPHA_OPAQUE;
-	SwapchainProperty.PresentMode		= system_window::present_mode::FIFO;
-	SwapchainProperty.Clipped			= true;
+	Property.Window.Resizable			= true;
+	Property.Window.Decorated			= true;
+	Property.Window.UserFocused			= true;
+	Property.Window.AutoMinimize		= false;
+	Property.Window.Floating			= false;
+	Property.Window.Maximized			= false;
+	Property.Window.Minimized			= false;
+	Property.Window.Visible				= true;
+	Property.Window.ScaleToMonitor		= false;
+	Property.Window.CenterCursor		= false;
+	Property.Window.FocusOnShow			= false;
+	//Property.Window.Hovered				= false;
+	Property.Swapchain.FrameCount		= 3;
+	Property.Swapchain.FrameRate		= 30.0;
+	Property.Swapchain.ColorSpace		= system_window::colorspace::SRGB_NONLINEAR;
+	Property.Swapchain.Usage			= image::usage::COLOR_ATTACHMENT;
+	Property.Swapchain.CompositeAlpha	= system_window::composite::ALPHA_OPAQUE;
+	Property.Swapchain.PresentMode		= system_window::present_mode::FIFO;
+	Property.Swapchain.Clipped			= true;
+	Property.PixelFormat				= VkFormat::VK_FORMAT_B8G8R8A8_SRGB;
+	Property.Position					= int2(0, 0);
+	Property.Size						= int2(640, 480);
+	Property.Title						= "cock";
 
-	Window = new system_window(
-		this->Engine,
-		Context,
-		SystemDisplay,
-		WindowProperty,
-		SwapchainProperty,
-		VkFormat::VK_FORMAT_B8G8R8A8_SRGB,
-		640,
-		480,
-		"cock"
-	);
-
-	Window1 = new system_window(
-		this->Engine,
-		Context,
-		SystemDisplay,
-		WindowProperty,
-		SwapchainProperty,
-		VkFormat::VK_FORMAT_B8G8R8A8_SRGB,
-		640,
-		480,
-		"cock"
-	);
-
-	//Triangle = new triangle(Engine, Context);
+	Window = new system_window(Engine, Context, Display, Property);
 
 }
 
 opencraft::~opencraft() {
 	delete Window;
-	delete Window2;
 }
 
 void opencraft::gameloop() {
-
-	system_display* SystemDisplay = this->Engine->get_primary_display();
-	window::prop WindowProperty = window::prop();
-
-	WindowProperty.UserFocused = 0;
-
-	system_window::swapchain::prop SwapchainProperty = system_window::swapchain::prop();
-	SwapchainProperty.Count				= 3;
-	SwapchainProperty.ColorSpace		= system_window::colorspace::SRGB_NONLINEAR;
-	SwapchainProperty.Usage				= texture::usage::COLOR_ATTACHMENT;
-	SwapchainProperty.CompositeAlpha	= system_window::composite::ALPHA_OPAQUE;
-	SwapchainProperty.PresentMode		= system_window::present_mode::FIFO;
-	SwapchainProperty.Clipped			= true;
-
-	Window2 = new system_window(
-		this->Engine,
-		Context,
-		SystemDisplay,
-		WindowProperty,
-		SwapchainProperty,
-		VkFormat::VK_FORMAT_B8G8R8A8_SRGB,
-		640,
-		480,
-		"cock"
-	);
 
 	while (!ExitApp.load()) {
 
 		core::logic::waitfor(10);
 		ExitApp.store(true);
 	}
-
-	delete Window1;
 
 }

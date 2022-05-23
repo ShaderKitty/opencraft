@@ -25,9 +25,7 @@ private:
 	// Main context for game
 	context* Context;
 	system_window* Window;
-	system_window* Window1;
-	system_window* Window2;
-
+	system_display* Display;
 	triangle *Triangle;
 
 };

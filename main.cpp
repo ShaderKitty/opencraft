@@ -15,7 +15,7 @@ int main(int aCmdArgCount, char* aCmdArgList[]) {
 	};
 
 	//geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, Layer.size(), Layer.data(), Ext.size(), Ext.data());
-	geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, 0, NULL, 0, NULL);
+	geodesuka::engine Engine(aCmdArgCount, (const char**)aCmdArgList, Layer.size(), Layer.data(), 0, NULL);
 	if (Engine.is_ready()) {
 		opencraft OpenCraft(&Engine, aCmdArgCount, aCmdArgList);
 		Engine.run(&OpenCraft);
