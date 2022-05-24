@@ -19,8 +19,6 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 
 	Display = Engine->get_primary_display();
 
-	system_window::propertyvsc Property;
-
 	Property.Window.Resizable			= true;
 	Property.Window.Decorated			= true;
 	Property.Window.UserFocused			= true;
@@ -32,7 +30,7 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 	Property.Window.ScaleToMonitor		= false;
 	Property.Window.CenterCursor		= false;
 	Property.Window.FocusOnShow			= false;
-	//Property.Window.Hovered				= false;
+
 	Property.Swapchain.FrameCount		= 3;
 	Property.Swapchain.FrameRate		= 30.0;
 	Property.Swapchain.ColorSpace		= system_window::colorspace::SRGB_NONLINEAR;
@@ -41,24 +39,42 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 	Property.Swapchain.PresentMode		= system_window::present_mode::FIFO;
 	Property.Swapchain.Clipped			= true;
 	Property.PixelFormat				= VkFormat::VK_FORMAT_B8G8R8A8_SRGB;
-	Property.Position					= int2(0, 0);
-	Property.Size						= int2(640, 480);
-	Property.Title						= "cock";
+	Property.Position					= float3(0, 0, 0);
+	Property.Size						= float2(0.3, 0.3);
+	Property.Title						= "cock1";
 
-	Window = new system_window(Engine, Context, Display, Property);
+	Window1 = new system_window(Engine, Context, Display, Property);
+	core::logic::waitfor(5);
+	delete Window1;
+
+	Property.Title = "cock2";
+
+	Window2 = new system_window(Engine, Context, Display, Property);
 
 }
 
 opencraft::~opencraft() {
-	delete Window;
+	delete Window4;
 }
 
 void opencraft::gameloop() {
 
+	core::logic::waitfor(5);
+
+	delete Window2;
+
+	Property.Title = "cock3";
+	Window3 = new system_window(Engine, Context, Display, Property);
+	Property.Title = "cock4";
+	Window4 = new system_window(Engine, Context, Display, Property);
+
 	while (!ExitApp.load()) {
 
-		core::logic::waitfor(10);
+		core::logic::waitfor(5);
 		ExitApp.store(true);
 	}
 
+	delete Window3;
+
+	core::logic::waitfor(5);
 }
