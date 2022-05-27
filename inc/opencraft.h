@@ -6,6 +6,8 @@
 
 #include <geodesuka/builtin/object/triangle.h>
 
+#include <geodesuka/builtin/stage/example.h>
+
 using namespace geodesuka;
 using namespace core;
 using namespace gcl;
@@ -26,12 +28,13 @@ private:
 
 	// Main context for game
 	context* Context;
-	system_window* Window1;
-	system_window* Window2;
-	system_window* Window3;
-	system_window* Window4;
-	system_display* Display;
-	triangle *Triangle;
+	builtin::stage::example *Example;
+	//system_window* Window1;
+	//system_window* Window2;
+	//system_window* Window3;
+	//system_window* Window4;
+	//system_display* Display;
+	//triangle *Triangle;
 
 };
 
