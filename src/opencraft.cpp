@@ -6,12 +6,6 @@
 
 opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geodesuka::core::app(aEngine, argc, argv) {
 
-}
-
-opencraft::~opencraft() {}
-
-void opencraft::gameloop() {
-
 	// Get GPU
 	size_t DeviceCount = 0;
 	device** Device = Engine->get_device_list(&DeviceCount);
@@ -25,11 +19,19 @@ void opencraft::gameloop() {
 
 	Example = new builtin::stage::example(Engine, Context);
 
+}
+
+opencraft::~opencraft() {
+	delete Example;
+
+}
+
+void opencraft::gameloop() {
+
 	while (!ExitApp.load()) {
 
-		core::logic::waitfor(60);
+		core::logic::waitfor(5);
 		ExitApp.store(true);
 	}
 
-	delete Example;
 }
