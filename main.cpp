@@ -21,5 +21,6 @@ int main(int aCmdArgCount, char* aCmdArgList[]) {
 		opencraft OpenCraft(&Engine, aCmdArgCount, aCmdArgList);
 		Engine.run(&OpenCraft);
 	}
+
 	return 0;
 }
