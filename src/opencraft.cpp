@@ -4,7 +4,9 @@
 
 #include <iostream>
 
-opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geodesuka::core::app(aEngine, argc, argv) {
+opencraft::opencraft(geodesuka::engine* aEngine, int aCmdArgCount, char* aCmdArgList[]) : geodesuka::core::app(aEngine) {
+
+	this->TimeStep = 0.01;
 
 	// Get GPU
 	size_t DeviceCount = 0;
@@ -17,7 +19,7 @@ opencraft::opencraft(geodesuka::engine* aEngine, int argc, char* argv[]) : geode
 		}
 	}
 
-	Example = new builtin::stage::example(Engine, Context);
+	//Example = new builtin::stage::example(Engine, Context);
 
 }
 
@@ -26,7 +28,7 @@ opencraft::~opencraft() {
 
 }
 
-void opencraft::gameloop() {
+void opencraft::run() {
 
 	while (!ExitApp.load()) {
 

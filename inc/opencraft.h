@@ -17,10 +17,12 @@ using namespace builtin::object;
 class opencraft : public app {
 public:
 
-	opencraft(engine* aEngine, int argc, char* argv[]);
+	opencraft(engine* aEngine, int aCmdArgCount, char* aCmdArgList[]);
 	~opencraft();
 
-	virtual void gameloop() override;
+protected:
+
+	virtual void run() override;
 
 private:
 

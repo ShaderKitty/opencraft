@@ -1,8 +1,8 @@
 #version 450 core
 
 layout (binding = 0) uniform Object3DTransform {
-	mat4 Translation;
-	mat4 Transform; 	// Transforms vertices to stage space.
+	mat4 Translation;	// Transforms vertices to world space.
+	mat4 Transform; 	// Transforms vertices to object space.
 } Object3D;
 
 // TODO: determine how sets will be organized.
@@ -31,5 +31,5 @@ void main() {
 	InterpolatedTextureCoordinate = VertexTextureCoordinate;
 
 	// Calculate vertex transforms.
-	gl_Position = Camera3D.Projection * Camera3D.Rotation * Camera3D.Translation * Object3D.Transform * vec4(VertexPosition, 1.0f);
+	gl_Position = Camera3D.Projection * Camera3D.Rotation * Camera3D.Translation * Object3D.Translation * Object3D.Transform * vec4(VertexPosition, 1.0f);
 }
